@@ -1,4 +1,5 @@
 import pandas as pd
+import sqlite3
 
 INPUT_CSV = "data/products.csv"
 OUTPUT_CSV = "data/products_automation.csv"
@@ -28,6 +29,21 @@ def transform_products():
     df_final.to_csv(OUTPUT_CSV, index=False)
 
     print("Automation dataset created successfully.")
+
+    connection = sqlite3.connect("database/products.db")
+
+    df_final.to_sql(
+        "automation_products",
+        connection,
+        if_exists="replace",
+        index=False
+    )
+
+    connection.close()
+
+    print("Automation table created successfully.")
+
+  
 
 
 if __name__ == "__main__":

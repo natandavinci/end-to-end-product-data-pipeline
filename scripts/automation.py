@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import pandas as pd
 import time
-
+import sqlite3
 
 
 def open_browser():
@@ -33,7 +33,16 @@ def open_browser():
 
     time.sleep(1)
     
-    tabela = pd.read_csv("data/products_automation.csv")
+    connection = sqlite3.connect("database/products.db")
+
+    query = """
+    SELECT *
+    FROM automation_products
+    """
+
+    tabela = pd.read_sql_query(query, connection)
+    connection.close()
+
     logs = []
     time.sleep(3)
 
@@ -134,6 +143,17 @@ def open_browser():
         "data/automation_logs.csv",
         index=False
     )
+
+    connection = sqlite3.connect("database/products.db")
+
+    df_logs.to_sql(
+        "automation_logs",
+        connection,
+        if_exists="append",
+        index=False
+    )
+
+    connection.close()
 
 
 if __name__ == "__main__":
