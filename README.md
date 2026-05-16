@@ -73,6 +73,10 @@ Streamlit Dashboard
 * Handles form filling and submission
 * Includes error handling and execution resilience
 
+# Automation Demo
+
+![Automation Demo](assets/automation.gif)
+
 ## Logging System
 
 * Tracks automation success and failures
@@ -88,6 +92,10 @@ Streamlit Dashboard
   * Success rate
   * Errors
   * Execution metrics
+
+  # Dashboard Preview
+
+![Dashboard Preview](assets/preview.png)
 
 ---
 
@@ -194,11 +202,8 @@ streamlit run dashboard/app.py
 ```
 
 ---
-# Dashboard Preview
 
-![Dashboard Preview](assets/preview.png)
 
----
 
 # Database Tables
 
@@ -209,9 +214,6 @@ Raw extracted product data.
 ## automation_products
 
 Cleaned and transformed data used by Selenium automation.
-# Automation Demo
-
-![Automation Demo](assets/automation.gif)
 
 ## automation_logs
 
