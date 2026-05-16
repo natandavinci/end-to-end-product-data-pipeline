@@ -252,7 +252,7 @@ This project demonstrates practical experience with:
 
 Developed by Natanael Queiroz
 
-GitHub: https://github.com/natandavinci
+GitHub: ```https://github.com/natandavinci```
 
-```
-```
+
+
