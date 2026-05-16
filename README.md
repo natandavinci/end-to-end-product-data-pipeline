@@ -194,6 +194,11 @@ streamlit run dashboard/app.py
 ```
 
 ---
+# Dashboard Preview
+
+![Dashboard Preview](assets/preview.png)
+
+---
 
 # Database Tables
 
@@ -204,6 +209,9 @@ Raw extracted product data.
 ## automation_products
 
 Cleaned and transformed data used by Selenium automation.
+# Automation Demo
+
+![Automation Demo](assets/automation.gif)
 
 ## automation_logs
 
@@ -244,7 +252,7 @@ This project demonstrates practical experience with:
 
 Developed by [Your Name]
 
-GitHub: [Your GitHub Profile]
+GitHub: https://github.com/natandavinci
 
 ```
 ```
