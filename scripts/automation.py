@@ -31,9 +31,11 @@ def open_browser():
     password.send_keys("123@#$456&abndBNM")
     password.send_keys(Keys.RETURN)
 
-    time.sleep(3)
+    time.sleep(1)
     
     tabela = pd.read_csv("data/products_automation.csv")
+
+    time.sleep(3)
 
     for linha in tabela.index:
 
@@ -41,61 +43,76 @@ def open_browser():
         codProdutc.click()
         codigo_product = tabela.loc[linha, "codigo_produto"]
         codProdutc.send_keys(codigo_product)
-        codProdutc.send_keys(Keys.RETURN)
+        
 
-        time.sleep(1)
+        time.sleep(2)
 
         marcProduct = driver.find_element(By.NAME, "marca")
         marcProduct.click()
         marca_product = tabela.loc[linha, "marca_produto"]
         marcProduct.send_keys(marca_product)
-        marcProduct.send_keys(Keys.RETURN)
+        
 
-        time.sleep(1)
-
+        time.sleep(2)
         typProduct = driver.find_element(By.NAME, "tipo")
         typProduct.click()
         type_product = tabela.loc[linha, "tipo_produto"]
         typProduct.send_keys(type_product)
-        typProduct.send_keys(Keys.RETURN)
+        
 
-        time.sleep(1)
+        time.sleep(2)
 
         catProduct = driver.find_element(By.NAME, "categoria")
         catProduct.click()
         category_product = tabela.loc[linha, "categoria_produto"]
         catProduct.send_keys(category_product)
-        catProduct.send_keys(Keys.RETURN)
+       
 
-        time.sleep(1)
+        time.sleep(2)
 
         pricProduct = driver.find_element(By.NAME, "preco_unitario")
         pricProduct.click()
         price_product = tabela.loc[linha, "preco_unitario"]
         pricProduct.send_keys(price_product)
-        pricProduct.send_keys(Keys.RETURN)
+        
 
-        time.sleep(1)
+        time.sleep(2)
 
         costProduct = driver.find_element(By.NAME, "custo")
         costProduct.click()
         costs_product = tabela.loc[linha, "custo_produto"]
         costProduct.send_keys(costs_product)
-        costProduct.send_keys(Keys.RETURN)
 
-        time.sleep(1)
+        time.sleep(2)
 
-        obsProduct = driver.find_element(By.NAME, "obs")
+        obsProduct = driver.find_element(By.ID, "obs")
+
+        obsProduct.clear()
+
         obsProduct.click()
+
+        obsProduct.send_keys(Keys.CONTROL + "a")
+
+        obsProduct.send_keys(Keys.DELETE)
+
         observations_product = tabela.loc[linha, "obs"]
-        obsProduct.send_keys(observations_product)
-        obsProduct.send_keys(Keys.RETURN)
 
-        time.sleep(1)
+        obsProduct.send_keys(str(observations_product))
 
-        send_Button = driver.find_element(By.ID, "pgtpy-botao")
-        send_Button.click()
-        time.sleep(1)
+        print(obsProduct.get_attribute("value"))
+       
+        time.sleep(2)
+
+        submit_button = driver.find_element(By.ID, "pgtpy-botao")
+        submit_button.click()
+
+
+        
+            
+        
+
+        time.sleep(2)
+
 
 
     input("Press ENTER to close browser...")
@@ -105,3 +122,4 @@ def open_browser():
 
 if __name__ == "__main__":
     open_browser()
+
