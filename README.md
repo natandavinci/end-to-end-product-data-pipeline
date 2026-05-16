@@ -1,4 +1,4 @@
-````markdown
+
 # End-to-End Automation Pipeline for Product Data Processing
 
 ## Overview
