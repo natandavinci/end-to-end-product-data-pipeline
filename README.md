@@ -250,7 +250,7 @@ This project demonstrates practical experience with:
 
 # Author
 
-Developed by [Your Name]
+Developed by Natanael Queiroz
 
 GitHub: https://github.com/natandavinci
 
