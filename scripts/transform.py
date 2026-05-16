@@ -8,6 +8,9 @@ OUTPUT_CSV = "data/products_automation.csv"
 def transform_products():
     df = pd.read_csv(INPUT_CSV)
 
+    # Cleaning the marca because some cases there is not data
+    df["brand"] = df["brand"].fillna("No Brand")
+
     df_final = pd.DataFrame()
 
     df_final["codigo_produto"] = df["sku"]

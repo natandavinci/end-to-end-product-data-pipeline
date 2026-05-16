@@ -15,7 +15,7 @@ def open_browser():
 
     driver.get("https://dlp.hashtagtreinamentos.com/python/intensivao/login")
 
-    time.sleep(3)
+    time.sleep(1)
 
     #LOGIN - EMAIL
     email = driver.find_element(By.NAME, "email")
@@ -23,7 +23,7 @@ def open_browser():
     email.send_keys("bottest@gmail.com")
     email.send_keys(Keys.RETURN)
     
-    time.sleep(3)
+    time.sleep(1)
 
     #LOGIN - PASSWORD
     password = driver.find_element(By.NAME, "password" )
@@ -43,8 +43,10 @@ def open_browser():
     tabela = pd.read_sql_query(query, connection)
     connection.close()
 
+    print(tabela[["codigo_produto", "marca_produto"]].head(20))
+    
     logs = []
-    time.sleep(3)
+    time.sleep(1)
 
     
     for linha in tabela.index:
@@ -57,7 +59,7 @@ def open_browser():
             codProdutc.send_keys(codigo_product)
             
 
-            time.sleep(2)
+            time.sleep(1)
 
             marcProduct = driver.find_element(By.NAME, "marca")
             marcProduct.click()
@@ -65,14 +67,14 @@ def open_browser():
             marcProduct.send_keys(marca_product)
             
 
-            time.sleep(2)
+            time.sleep(1)
             typProduct = driver.find_element(By.NAME, "tipo")
             typProduct.click()
             type_product = tabela.loc[linha, "tipo_produto"]
             typProduct.send_keys(type_product)
             
 
-            time.sleep(2)
+            time.sleep(1)
 
             catProduct = driver.find_element(By.NAME, "categoria")
             catProduct.click()
@@ -80,7 +82,7 @@ def open_browser():
             catProduct.send_keys(category_product)
         
 
-            time.sleep(2)
+            time.sleep(1)
 
             pricProduct = driver.find_element(By.NAME, "preco_unitario")
             pricProduct.click()
@@ -88,14 +90,14 @@ def open_browser():
             pricProduct.send_keys(price_product)
             
 
-            time.sleep(2)
+            time.sleep(1)
 
             costProduct = driver.find_element(By.NAME, "custo")
             costProduct.click()
             costs_product = tabela.loc[linha, "custo_produto"]
             costProduct.send_keys(costs_product)
 
-            time.sleep(2)
+            time.sleep(1)
 
             obsProduct = driver.find_element(By.ID, "obs")
 
@@ -113,7 +115,7 @@ def open_browser():
 
             print(obsProduct.get_attribute("value"))
         
-            time.sleep(2)
+            time.sleep(1)
 
             submit_button = driver.find_element(By.ID, "pgtpy-botao")
             submit_button.click()
@@ -124,7 +126,7 @@ def open_browser():
             })
             
 
-            time.sleep(2)
+            time.sleep(1)
 
         except Exception as error:
 
