@@ -34,90 +34,110 @@ def open_browser():
     time.sleep(1)
     
     tabela = pd.read_csv("data/products_automation.csv")
-
+    logs = []
     time.sleep(3)
 
+    
     for linha in tabela.index:
 
-        codProdutc = driver.find_element(By.NAME, "codigo")
-        codProdutc.click()
         codigo_product = tabela.loc[linha, "codigo_produto"]
-        codProdutc.send_keys(codigo_product)
-        
 
-        time.sleep(2)
-
-        marcProduct = driver.find_element(By.NAME, "marca")
-        marcProduct.click()
-        marca_product = tabela.loc[linha, "marca_produto"]
-        marcProduct.send_keys(marca_product)
-        
-
-        time.sleep(2)
-        typProduct = driver.find_element(By.NAME, "tipo")
-        typProduct.click()
-        type_product = tabela.loc[linha, "tipo_produto"]
-        typProduct.send_keys(type_product)
-        
-
-        time.sleep(2)
-
-        catProduct = driver.find_element(By.NAME, "categoria")
-        catProduct.click()
-        category_product = tabela.loc[linha, "categoria_produto"]
-        catProduct.send_keys(category_product)
-       
-
-        time.sleep(2)
-
-        pricProduct = driver.find_element(By.NAME, "preco_unitario")
-        pricProduct.click()
-        price_product = tabela.loc[linha, "preco_unitario"]
-        pricProduct.send_keys(price_product)
-        
-
-        time.sleep(2)
-
-        costProduct = driver.find_element(By.NAME, "custo")
-        costProduct.click()
-        costs_product = tabela.loc[linha, "custo_produto"]
-        costProduct.send_keys(costs_product)
-
-        time.sleep(2)
-
-        obsProduct = driver.find_element(By.ID, "obs")
-
-        obsProduct.clear()
-
-        obsProduct.click()
-
-        obsProduct.send_keys(Keys.CONTROL + "a")
-
-        obsProduct.send_keys(Keys.DELETE)
-
-        observations_product = tabela.loc[linha, "obs"]
-
-        obsProduct.send_keys(str(observations_product))
-
-        print(obsProduct.get_attribute("value"))
-       
-        time.sleep(2)
-
-        submit_button = driver.find_element(By.ID, "pgtpy-botao")
-        submit_button.click()
-
-
-        
+        try:
+            codProdutc = driver.find_element(By.NAME, "codigo")
+            codProdutc.click()
+            codProdutc.send_keys(codigo_product)
             
+
+            time.sleep(2)
+
+            marcProduct = driver.find_element(By.NAME, "marca")
+            marcProduct.click()
+            marca_product = tabela.loc[linha, "marca_produto"]
+            marcProduct.send_keys(marca_product)
+            
+
+            time.sleep(2)
+            typProduct = driver.find_element(By.NAME, "tipo")
+            typProduct.click()
+            type_product = tabela.loc[linha, "tipo_produto"]
+            typProduct.send_keys(type_product)
+            
+
+            time.sleep(2)
+
+            catProduct = driver.find_element(By.NAME, "categoria")
+            catProduct.click()
+            category_product = tabela.loc[linha, "categoria_produto"]
+            catProduct.send_keys(category_product)
         
 
-        time.sleep(2)
+            time.sleep(2)
+
+            pricProduct = driver.find_element(By.NAME, "preco_unitario")
+            pricProduct.click()
+            price_product = tabela.loc[linha, "preco_unitario"]
+            pricProduct.send_keys(price_product)
+            
+
+            time.sleep(2)
+
+            costProduct = driver.find_element(By.NAME, "custo")
+            costProduct.click()
+            costs_product = tabela.loc[linha, "custo_produto"]
+            costProduct.send_keys(costs_product)
+
+            time.sleep(2)
+
+            obsProduct = driver.find_element(By.ID, "obs")
+
+            obsProduct.clear()
+
+            obsProduct.click()
+
+            obsProduct.send_keys(Keys.CONTROL + "a")
+
+            obsProduct.send_keys(Keys.DELETE)
+
+            observations_product = tabela.loc[linha, "obs"]
+
+            obsProduct.send_keys(str(observations_product))
+
+            print(obsProduct.get_attribute("value"))
+        
+            time.sleep(2)
+
+            submit_button = driver.find_element(By.ID, "pgtpy-botao")
+            submit_button.click()
+            logs.append({
+                "produto": codigo_product,
+                "status": "success",
+                "message": ""
+            })
 
 
+            
+                
+            
 
-    input("Press ENTER to close browser...")
+            time.sleep(2)
 
-    driver.quit()
+        except Exception as error:
+
+             logs.append({
+            "produto": codigo_product,
+            "status": "error",
+            "message": str(error)
+         })
+
+             continue
+        
+
+    df_logs = pd.DataFrame(logs)
+
+    df_logs.to_csv(
+        "data/automation_logs.csv",
+        index=False
+    )
 
 
 if __name__ == "__main__":
