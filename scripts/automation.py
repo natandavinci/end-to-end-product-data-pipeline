@@ -113,10 +113,6 @@ def open_browser():
                 "status": "success",
                 "message": ""
             })
-
-
-            
-                
             
 
             time.sleep(2)
