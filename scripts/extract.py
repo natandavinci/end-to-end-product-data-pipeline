@@ -12,17 +12,7 @@ def extract_products():
 
         products = data["products"]
 
-        df = pd.DataFrame(products)[
-    [
-        "id",
-        "title",
-        "price",
-        "category",
-        "stock",
-        "rating",
-        "brand"
-                     ]
-                                    ]
+        df = pd.DataFrame(products)
 
         print(df.head())
 
