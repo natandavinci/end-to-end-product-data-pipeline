@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import sqlite3
 
 # PAGE CONFIG
 st.set_page_config(
@@ -11,7 +12,15 @@ st.set_page_config(
 st.title("📊 Automation Pipeline Dashboard")
 
 # LOAD DATA
-df = pd.read_csv("data/automation_logs.csv")
+connection = sqlite3.connect("database/products.db")
+
+query = """
+SELECT *
+FROM automation_logs
+"""
+df = pd.read_sql_query(query, connection)
+
+connection.close()
 
 # METRICS
 total = len(df)

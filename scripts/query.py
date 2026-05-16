@@ -1,28 +1,16 @@
 import sqlite3
 import pandas as pd
 
-DATABASE_PATH = "database/products.db"
+connection = sqlite3.connect("database/products.db")
 
+query = """
+SELECT *
+FROM automation_products
+LIMIT 10
+"""
 
-def query_products():
-    connection = sqlite3.connect(DATABASE_PATH)
+df = pd.read_sql_query(query, connection)
 
-    query = """
-    SELECT
-        id,
-        title,
-        price,
-        category
-    FROM products
-    WHERE price > 100
-    """
+print(df)
 
-    df = pd.read_sql_query(query, connection)
-
-    print(df)
-
-    connection.close()
-
-
-if __name__ == "__main__":
-    query_products()
+connection.close()
