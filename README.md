@@ -254,9 +254,9 @@ This project demonstrates practical experience with:
 
 Developed by Natanael Queiroz
 
-GitHub: ```https://github.com/natandavinci```
----
-Linkedin: ```https://www.linkedin.com/in/natanael-queiroz-059720213/```
+*GitHub: ```https://github.com/natandavinci```
+
+*Linkedin: ```https://www.linkedin.com/in/natanael-queiroz-059720213/```
 
 
 
