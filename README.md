@@ -238,7 +238,7 @@ This project demonstrates practical experience with:
 
 ---
 
-# Future Improvements
+# 🚀 Future Improvements
 
 * Docker containerization
 * Scheduled execution (Cron/Airflow)
@@ -247,6 +247,11 @@ This project demonstrates practical experience with:
 * Retry mechanisms
 * Authentication management with `.env`
 * Advanced dashboard analytics
+* Implement structured JSON logging for better observability
+* Add end-to-end pipeline traceability across ETL stages
+* Containerize the project using Docker
+* Improve monitoring and error tracking
+
 
 ---
 
